@@ -8,6 +8,7 @@ import br.com.godebts.repository.UsuarioRepository;
 import br.com.godebts.security.ImplementsUserDetailsService;
 import br.com.godebts.security.JWTUtil;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
+@NoArgsConstructor
 public class LoginController {
 
     private AuthenticationManager authenticationManager;
