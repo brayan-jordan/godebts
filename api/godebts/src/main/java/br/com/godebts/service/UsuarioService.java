@@ -2,6 +2,7 @@ package br.com.godebts.service;
 
 import br.com.godebts.dto.UsuarioDTO;
 import br.com.godebts.dto.UsuarioInputDTO;
+import br.com.godebts.exception.NegoxioException;
 import br.com.godebts.mapper.UsuarioAssembler;
 import br.com.godebts.model.Usuario;
 import br.com.godebts.repository.UsuarioRepository;
@@ -19,8 +20,7 @@ public class UsuarioService {
 
     private UsuarioDTO cadastrarUsuario(UsuarioInputDTO usuarioInput) {
         if (usuarioRepository.existsByEmail(usuarioInput.getEmail()).isPresent()) {
-            // Falta configurar as exceptions
-            return null;
+            throw new NegoxioException("Já existe um usuário com esse email");
         }
 
         Usuario usuarioToSave = usuarioAssembler.toEntity(usuarioInput);
