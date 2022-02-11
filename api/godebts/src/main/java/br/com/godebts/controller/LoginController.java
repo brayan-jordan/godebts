@@ -8,19 +8,18 @@ import br.com.godebts.repository.UsuarioRepository;
 import br.com.godebts.security.ImplementsUserDetailsService;
 import br.com.godebts.security.JWTUtil;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@NoArgsConstructor
 public class LoginController {
 
     private AuthenticationManager authenticationManager;
@@ -29,17 +28,17 @@ public class LoginController {
     private JWTUtil jwtUtil;
     private ImplementsUserDetailsService implementsUserDetailsService;
 
-    @PostMapping("/login")
+    @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody LoginInputDTO infoLogin) throws Exception {
+        Usuario usuario = usuarioRepository.findByEmail(infoLogin.getEmail());
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(infoLogin.getEmail(), infoLogin.getSenha()));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(usuario.getUsername(), usuario.getPassword()));
         } catch (BadCredentialsException ex) {
             throw new Exception("Usuario senha invalido", ex);
         }
 
-        final UserDetails userDetails = implementsUserDetailsService.loadUserByUsername(infoLogin.getEmail());
+        final UserDetails userDetails = implementsUserDetailsService.loadUserByUsername(usuario.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
-        Usuario usuario = usuarioRepository.findByEmail(infoLogin.getEmail());
         return ResponseEntity.ok(new AuthenticationResponse(jwt, usuarioAssembler.toModel(usuario)));
     }
 }
