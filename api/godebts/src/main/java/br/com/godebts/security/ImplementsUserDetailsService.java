@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 @AllArgsConstructor
-public class ImplementsUserDetailsService implements UserDetailsService  {
+public class ImplementsUserDetailsService implements UserDetailsService {
 
     private UsuarioRepository usuarioRepository;
 
