@@ -8,3 +8,21 @@ CREATE TABLE usuarios (
     data_hora_cadastro DATETIME,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE role (
+    nome varchar(20),
+    primary key (nome)
+);
+
+CREATE TABLE role_usuarios (
+    id bigint not null auto_increment,
+    role_nome varchar(60),
+    usuarios_id bigint not null,
+    primary key (id)
+);
+
+ALTER TABLE role_usuarios ADD CONSTRAINT fk_role_usuarios
+FOREIGN KEY (usuarios_id) REFERENCES usuarios(id);
+
+ALTER TABLE role_usuarios ADD CONSTRAINT fk_role_nome
+FOREIGN KEY (role_nome) REFERENCES role (nome);
