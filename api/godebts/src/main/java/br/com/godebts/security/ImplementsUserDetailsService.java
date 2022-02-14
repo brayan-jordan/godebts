@@ -9,13 +9,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
-
+@AllArgsConstructor
 @Repository
 @Transactional
-@AllArgsConstructor
-public class ImplementsUserDetailsService implements UserDetailsService {
+public class ImplementsUserDetailsService implements  UserDetailsService{
 
     private UsuarioRepository usuarioRepository;
 
@@ -36,5 +35,4 @@ public class ImplementsUserDetailsService implements UserDetailsService {
         );
 
     }
-
 }

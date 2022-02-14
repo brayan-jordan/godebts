@@ -28,9 +28,9 @@ public class LoginController {
     private JWTUtil jwtUtil;
     private ImplementsUserDetailsService implementsUserDetailsService;
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody LoginInputDTO infoLogin) throws Exception {
-        Usuario usuario = usuarioRepository.findByEmail(infoLogin.getEmail());
+        Usuario usuario = usuarioAssembler.toEntityLogin(infoLogin);
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(usuario.getUsername(), usuario.getPassword()));
         } catch (BadCredentialsException ex) {
@@ -39,6 +39,7 @@ public class LoginController {
 
         final UserDetails userDetails = implementsUserDetailsService.loadUserByUsername(usuario.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new AuthenticationResponse(jwt, usuarioAssembler.toModel(usuario)));
+        Usuario usuarioCarregado = usuarioRepository.findByEmail(usuario.getEmail());
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, usuarioAssembler.toModel(usuarioCarregado)));
     }
 }
