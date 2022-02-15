@@ -7,7 +7,11 @@ const Login: React.FC = () => {
         <>
             <BannerLogin>
                 <div className="segura">
+                    <p> Go </p>
                     <img src={moneybaglogo} alt="" />
+                </div>
+                <div className="segura"> 
+                    <p> Debts </p>
                 </div>
             </BannerLogin>
         </>
