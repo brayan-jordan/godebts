@@ -1,5 +1,5 @@
 import React from "react";
-import { BannerLogin } from "./styles";
+import { BannerLogin, InfoLogin  } from "./styles";
 import moneybaglogo from '../../assets/moneybaglogo.png';
 
 const Login: React.FC = () => {
@@ -14,6 +14,12 @@ const Login: React.FC = () => {
                     <p> Debts </p>
                 </div>
             </BannerLogin>
+            <InfoLogin>
+                <p>Faça seu login</p>
+                <input type="text" placeholder="Insira seu email, telefone, nome de usuário"/>
+                <input type="text" placeholder="Insira sua senha, chave de acesso"/>
+                <button> Entrar </button>
+            </InfoLogin>
         </>
     )
 }
