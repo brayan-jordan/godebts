@@ -3,6 +3,7 @@ import { BannerLogin, InfoLogin  } from "./styles";
 import moneybaglogo from '../../assets/moneybaglogo.png';
 import { useAuth } from "../../hooks/auth";
 import { Link, useNavigate } from 'react-router-dom';
+import { MenssagemErro } from "../../hooks/toast";
 
 const Login: React.FC = () => {
     const { signIn } = useAuth();
@@ -32,9 +33,8 @@ const Login: React.FC = () => {
             navigate("/home")
     
         } catch(err) {
-            console.log(err)
+            MenssagemErro("Erro, email ou senha inválido")
         }
-        
     }, [])
 
     return (

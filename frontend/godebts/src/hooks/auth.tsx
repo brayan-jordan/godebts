@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useState } from "react";
 import { useContext } from "react";
 import api from "../service/api"
+import { MenssagemErro } from "./toast";
 
 
 interface AuthState {
@@ -36,16 +37,16 @@ export const AuthProvider: React.FC = ({children}) => {
   });
 
   const signIn = useCallback( async ({email, senha}) => {
-    const response = await api.post("login", {
-      email,
-      senha
-    });
+      const response = await api.post("login", {
+        email,
+        senha
+      });
+  
+      const { jwt, usuario } = response.data;
 
-    const { jwt, usuario } = response.data;
-
-    localStorage.setItem("@Godebts:token", jwt);
-    localStorage.setItem("@Godebts:usuario", JSON.stringify(usuario))
-    setData({ jwt, usuario });
+      localStorage.setItem("@Godebts:token", jwt);
+      localStorage.setItem("@Godebts:usuario", JSON.stringify(usuario))
+      setData({ jwt, usuario });
   }, []);
 
   const signOut = useCallback(() => {
