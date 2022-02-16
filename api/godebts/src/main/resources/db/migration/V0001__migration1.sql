@@ -26,3 +26,5 @@ FOREIGN KEY (usuarios_id) REFERENCES usuarios(id);
 
 ALTER TABLE role_usuarios ADD CONSTRAINT fk_role_nome
 FOREIGN KEY (role_nome) REFERENCES role (nome);
+
+INSERT INTO role VALUES ("ROLE_USER");
