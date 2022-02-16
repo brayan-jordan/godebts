@@ -7,12 +7,16 @@ import { MenssagemErro } from "../../hooks/toast";
 
 const Login: React.FC = () => {
     const { signIn } = useAuth();
-    
     const navigate = useNavigate()
+
+    function timeout(delay: number) {
+        return new Promise( res => setTimeout(res, delay) );
+    }
 
     const handleSendLogin = useCallback(async(event: FormEvent) => {
         try {
             event.preventDefault()
+            
             const getEmail = (document.getElementById("email") as HTMLInputElement).value;
             const getPassword = (document.getElementById("password") as HTMLInputElement).value
 
@@ -33,7 +37,9 @@ const Login: React.FC = () => {
             navigate("/home")
     
         } catch(err) {
-            MenssagemErro("Erro, email ou senha inválido")
+            MenssagemErro("Erro, email ou senha inválido");
+            (document.getElementById('email') as HTMLInputElement).value='';
+            (document.getElementById('password') as HTMLInputElement).value='';
         }
     }, [])
 
