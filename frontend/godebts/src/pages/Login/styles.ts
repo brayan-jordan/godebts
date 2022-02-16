@@ -96,7 +96,7 @@ export const InfoLogin = styled.div`
     }
 
     .esqueceusenha {
-        margin-top: 25px;
+        margin-top: 15px;
         font-family: 'Roboto', sans-serif;
         font-size: 20px;
         color: #2C3333;
@@ -110,7 +110,7 @@ export const InfoLogin = styled.div`
         font-size: 20px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 25px;
+        margin-top: 35px;
         font-weight: bold;
     }
 
