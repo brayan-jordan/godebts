@@ -9,6 +9,7 @@ import br.com.godebts.model.Usuario;
 import br.com.godebts.repository.RoleRepository;
 import br.com.godebts.repository.UsuarioRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -30,6 +31,7 @@ public class UsuarioService {
         Usuario usuarioToSave = usuarioAssembler.toEntity(usuarioInput);
         List<Role> allRoles = roleRepository.findAll();
         usuarioToSave.setDataHoraCadastro(LocalDateTime.now());
+        usuarioToSave.setSenha(new BCryptPasswordEncoder().encode(usuarioToSave.getSenha()));
         usuarioToSave.setRoles(allRoles);
         return usuarioAssembler.toModel(usuarioRepository.save(usuarioToSave));
     }
