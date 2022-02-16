@@ -5,8 +5,6 @@ import { useAuth } from "../../hooks/auth";
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
-    const [inputLogin, setiInputLogin] = useState("")
-    const [inputSenha, setInputSenha] = useState("")
     const { signIn } = useAuth();
     
     const navigate = useNavigate()
@@ -14,24 +12,27 @@ const Login: React.FC = () => {
     const handleSendLogin = useCallback(async(event: FormEvent) => {
         try {
             event.preventDefault()
+            const getEmail = (document.getElementById("email") as HTMLInputElement).value;
+            const getPassword = (document.getElementById("password") as HTMLInputElement).value
 
-            if (inputLogin.trim() === "") {
+            console.log(getEmail)
+            if (getEmail.trim() === '') {
                 return
             }
     
-            if (inputSenha.trim() === "") {
+            if (getPassword.trim() === '') {
                 return
             }
 
             await signIn({
-                email: inputLogin,
-                senha: inputSenha
+                email: getEmail,
+                senha: getPassword
             })
 
             navigate("/home")
     
         } catch(err) {
-
+            console.log(err)
         }
         
     }, [])
@@ -50,8 +51,8 @@ const Login: React.FC = () => {
             <InfoLogin>
                 <p>Faça seu login</p>
                 <form onSubmit={handleSendLogin}>
-                    <input type="text" value={inputLogin} onChange={event => setiInputLogin(event.target.value)} placeholder="Insira seu email, telefone, nome de usuário"/>
-                    <input type="password" value={inputSenha} onChange={event => setInputSenha(event.target.value)} placeholder="Insira sua senha, chave de acesso"/>
+                    <input type="email" id="email" placeholder="Insira seu email, telefone, nome de usuário"/>
+                    <input type="password" id="password" placeholder="Insira sua senha, chave de acesso"/>
                     <button type="submit"> Entrar </button>
                 </form>
                 <h1 className="esqueceusenha"> Esqueceu sua senha?</h1>
