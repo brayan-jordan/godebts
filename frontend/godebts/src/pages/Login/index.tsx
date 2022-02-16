@@ -19,6 +19,8 @@ const Login: React.FC = () => {
                 <input type="text" placeholder="Insira seu email, telefone, nome de usuário"/>
                 <input type="text" placeholder="Insira sua senha, chave de acesso"/>
                 <button> Entrar </button>
+                <h1 className="esqueceusenha"> Esqueceu sua senha?</h1>
+                <h1 className="cadastrese"> Não tem uma conta? Cadastre-se</h1>
             </InfoLogin>
         </>
     )

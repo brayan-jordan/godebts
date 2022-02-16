@@ -32,6 +32,8 @@ export const BannerLogin = styled.div`
             margin-top: 20px;
             margin-right: 10px;
         }
+
+       
     }
 `
 
@@ -50,7 +52,7 @@ export const InfoLogin = styled.div`
         font-size: 40px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 160px;
+        margin-top: 150px;
         font-weight: bold;
     }
 
@@ -82,7 +84,7 @@ export const InfoLogin = styled.div`
         font-weight: bold;
         font-size: 24px;
         background-color: #478CD1;
-        width: 200px;
+        width: 230px;
         height: 45px;
         color: #FFF;
         margin-top: 30px;
@@ -91,6 +93,25 @@ export const InfoLogin = styled.div`
         text-align: center;
         border: 0 none;
         border-radius: 10px;
+    }
+
+    .esqueceusenha {
+        margin-top: 25px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        color: #2C3333;
+        font-weight: 600;
+    }
+
+    .cadastrese {
+        max-width: 250px;
+        font-family: 'Roboto', sans-serif;
+        color: #071454;
+        font-size: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        font-weight: bold;
     }
 
 `
