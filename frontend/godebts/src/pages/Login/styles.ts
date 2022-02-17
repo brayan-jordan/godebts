@@ -119,6 +119,7 @@ export const InfoLogin = styled.div`
         margin-right: auto;
         margin-top: 35px;
         font-weight: bold;
+        cursor: pointer;
     }
 
 `

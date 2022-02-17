@@ -9,10 +9,6 @@ const Login: React.FC = () => {
     const { signIn } = useAuth();
     const navigate = useNavigate()
 
-    function timeout(delay: number) {
-        return new Promise( res => setTimeout(res, delay) );
-    }
-
     const handleSendLogin = useCallback(async(event: FormEvent) => {
         try {
             event.preventDefault()
@@ -62,7 +58,7 @@ const Login: React.FC = () => {
                     <button type="submit"> Entrar </button>
                 </form>
                 <h1 className="esqueceusenha"> Esqueceu sua senha?</h1>
-                <h1 className="cadastrese"> Não tem uma conta? Cadastre-se</h1>
+                <h1 className="cadastrese" onClick={() => navigate("/cadastrar")}> Não tem uma conta? Cadastre-se</h1>
             </InfoLogin>
         </>
     )
