@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { shade } from "polished";
 
 export const BannerLogin = styled.div`
     background-color: #478CD1;
@@ -93,6 +94,12 @@ export const InfoLogin = styled.div`
         text-align: center;
         border: 0 none;
         border-radius: 10px;
+
+        transition: background-color 0.4s;
+
+        &:hover {
+            background: ${shade(0.4, '#2666CF')};
+        }
     }
 
     .esqueceusenha {

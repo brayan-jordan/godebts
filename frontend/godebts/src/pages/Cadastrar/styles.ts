@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { shade } from "polished";
 
 export const InfoCadastro = styled.div`
     background-color: #DBDBDB;
@@ -59,10 +60,17 @@ export const InfoCadastro = styled.div`
         text-align: center;
         border: 0 none;
         border-radius: 10px;
+
+        transition: background-color 0.4s;
+
+        &:hover {
+            background: ${shade(0.4, '#2666CF')};
+        }
     }
 
     .backtologin {
         margin-top: 20px;
+        cursor: pointer;
         width: 200px;
         margin-left: auto;
         margin-right: auto;
@@ -70,5 +78,11 @@ export const InfoCadastro = styled.div`
         font-size: 20px;
         color: #2C3333;
         font-weight: 600;
+
+        transition: background-color 0.4s;
+
+        &:hover {
+            color: ${shade(0.4, '#222426')};
+        }
     }
 `
