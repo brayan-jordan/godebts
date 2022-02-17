@@ -13,7 +13,7 @@ public class GastoController {
 
     private GastoService gastoService;
 
-    @PostMapping("/adicionar")
+    @PostMapping("/adicionar/{usuarioId}")
     public GastoDTO cadastrarGasto(@RequestBody GastoInputDTO infoGasto, @PathVariable Long usuarioId) {
         return gastoService.adicionarGasto(infoGasto, usuarioId);
     }
