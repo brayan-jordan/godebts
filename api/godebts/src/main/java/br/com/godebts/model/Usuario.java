@@ -50,6 +50,9 @@ public class Usuario implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_nome", referencedColumnName = "nome"))
     private List<Role> roles;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private List<Gasto> gastos;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return (Collection<? extends GrantedAuthority>) this.roles;
