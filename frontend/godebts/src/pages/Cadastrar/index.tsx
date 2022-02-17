@@ -10,7 +10,8 @@ import api from "../../service/api";
 
 
 const Cadastrar: React.FC = () => {
-    const navigate = useNavigate();        
+    const navigate = useNavigate();   
+    var isError = "";     
 
     const handleSendCadastro = useCallback(async(event: FormEvent) => {
             try {
@@ -54,16 +55,21 @@ const Cadastrar: React.FC = () => {
                 }
 
                 await api.post("/usuarios/cadastrar", {nome: getNome, dataNascimento: getData, telefone: getTelefone, email: getEmail, senha: getSenha}).catch
-                ((error ) => MenssagemErro(error.response.data.titulo))
+                ((error ) => {isError = (error.response.data.titulo)})
+
+                if (isError.trim() !== '') {
+                    MenssagemErro(isError)
+                    return
+                }
 
                 MenssagemSucesso("Cadastro realizado com sucesso")
 
                 navigate("/")
-
             } catch (err) {
                 console.log(err)
+                return
             }
-    }, [])
+    }, [navigate])
     return (
         <>
             <BannerLogin>
