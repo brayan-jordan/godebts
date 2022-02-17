@@ -23,6 +23,12 @@ public class UsuarioService {
     private UsuarioAssembler usuarioAssembler;
     private RoleRepository roleRepository;
 
+    public Usuario buscarPeloId(Long usuarioId) {
+        return usuarioRepository.findById(usuarioId).orElseThrow(() -> new NegoxioException(
+                "Usuário não encontrado"
+        ));
+    }
+
     public UsuarioDTO cadastrarUsuario(UsuarioInputDTO usuarioInput) {
         if (usuarioRepository.existsByEmail(usuarioInput.getEmail()).isPresent()) {
             throw new NegoxioException("Já existe um usuário com esse email");
