@@ -21,6 +21,7 @@ public class GastoService {
     public GastoDTO adicionarGasto(GastoInputDTO infoGasto, Long usuarioId) {
         Gasto gasto = gastoAssembler.toEntity(infoGasto);
         gasto.setUsuario(usuarioService.buscarPeloId(usuarioId));
+        gasto.setValor(gasto.getValor() - gasto.getValor() * 2);
         gasto.setDataHoraCadastro(LocalDateTime.now());
 
         return gastoAssembler.toModel(gastoRepository.save(gasto));
