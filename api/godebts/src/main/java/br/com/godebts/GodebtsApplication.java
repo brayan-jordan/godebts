@@ -13,5 +13,5 @@ public class GodebtsApplication {
 		System.out.println(new BCryptPasswordEncoder().encode("123456"));
 
 	}
-
+ 
 }

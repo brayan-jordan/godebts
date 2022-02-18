@@ -53,6 +53,9 @@ public class Usuario implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<Gasto> gastos;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private List<Gasto> ganhos;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return (Collection<? extends GrantedAuthority>) this.roles;

@@ -42,3 +42,17 @@ CREATE TABLE gastos (
 
 ALTER TABLE gastos ADD CONSTRAINT fk_gasto_usuario
 FOREIGN KEY (usuario_id) REFERENCES usuarios (id);
+
+CREATE TABLE ganhos (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    usuario_id bigint NOT NULL,
+    nome VARCHAR(60) NOT NULL,
+    valor DOUBLE(10,2) NOT NULL,
+    descricao VARCHAR(500) NOT NULL,
+    data DATE NOT NULL,
+    data_hora_cadastro DATE NOT NULL,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE ganhos ADD CONSTRAINT fk_ganho_usuario
+FOREIGN KEY (usuario_id) REFERENCES usuarios (id);
