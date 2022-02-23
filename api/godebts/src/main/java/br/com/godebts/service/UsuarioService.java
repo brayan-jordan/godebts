@@ -42,4 +42,10 @@ public class UsuarioService {
         return usuarioAssembler.toModel(usuarioRepository.save(usuarioToSave));
     }
 
+    public UsuarioDTO buscarUsuario(Long usuarioId) {
+        return usuarioAssembler.toModel(usuarioRepository.findById(usuarioId).orElseThrow(() -> new NegoxioException(
+                "Dahora"
+        )));
+    }
+
 }
