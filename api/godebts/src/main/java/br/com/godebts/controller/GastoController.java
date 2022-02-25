@@ -23,4 +23,9 @@ public class GastoController {
         return gastoService.duplicarGastoProxMes(usuarioId, gastoId);
     }
 
+    @DeleteMapping("/deletar/{gastoId}")
+    public void deletarGasto(@PathVariable Long gastoId) {
+        gastoService.deletarGasto(gastoId);
+    }
+
 }
