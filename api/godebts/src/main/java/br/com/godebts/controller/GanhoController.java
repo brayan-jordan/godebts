@@ -4,6 +4,7 @@ import br.com.godebts.dto.GanhoDTO;
 import br.com.godebts.dto.GanhoInputDTO;
 import br.com.godebts.service.GanhoService;
 import lombok.AllArgsConstructor;
+import org.hibernate.annotations.Loader;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,4 +29,8 @@ public class GanhoController {
         ganhoService.deletarGanho(ganhoId);
     }
 
+    @PatchMapping("/editar/{ganhoId}")
+    public GanhoDTO editarGanho(@PathVariable Long ganhoId, @RequestBody GanhoInputDTO ganhoInputDTO) {
+        return ganhoService.editarGanho(ganhoId, ganhoInputDTO);
+    }
 }

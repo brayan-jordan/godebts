@@ -53,4 +53,16 @@ public class GanhoService {
         }
     }
 
+    public GanhoDTO editarGanho(Long ganhoId, GanhoInputDTO infoEditar) {
+        Ganho ganho = ganhoRepository.findById(ganhoId).orElseThrow(() -> new NegoxioException(
+                "Ganho nao encontrado com esse ID"
+        ));
+
+        ganho.setNome(infoEditar.getNome());
+        ganho.setDescricao(infoEditar.getDescricao());
+        ganho.setData(infoEditar.getData());
+        ganho.setValor(infoEditar.getValor());
+        return ganhoAssembler.toModel(ganhoRepository.save(ganho));
+    }
+
 }
