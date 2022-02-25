@@ -1,9 +1,12 @@
 package br.com.godebts.service;
 
+import br.com.godebts.dto.GanhoDTO;
+import br.com.godebts.dto.GanhoInputDTO;
 import br.com.godebts.dto.GastoDTO;
 import br.com.godebts.dto.GastoInputDTO;
 import br.com.godebts.exception.NegoxioException;
 import br.com.godebts.mapper.GastoAssembler;
+import br.com.godebts.model.Ganho;
 import br.com.godebts.model.Gasto;
 import br.com.godebts.repository.GastoRepository;
 import lombok.AllArgsConstructor;
@@ -49,6 +52,18 @@ public class GastoService {
         } catch (Exception e) {
             throw new NegoxioException("Nao existe gasto com esse Id");
         }
+    }
+
+    public GastoDTO editarGanho(Long gastoId, GastoInputDTO infoEditar) {
+        Gasto gasto = gastoRepository.findById(gastoId).orElseThrow(() -> new NegoxioException(
+                "Ganho nao encontrado com esse ID"
+        ));
+
+        gasto.setNome(infoEditar.getNome());
+        gasto.setDescricao(infoEditar.getDescricao());
+        gasto.setData(infoEditar.getData());
+        gasto.setValor(infoEditar.getValor());
+        return gastoAssembler.toModel(gastoRepository.save(gasto));
     }
 
 }

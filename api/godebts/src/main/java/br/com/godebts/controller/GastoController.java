@@ -1,5 +1,6 @@
 package br.com.godebts.controller;
 
+import br.com.godebts.dto.GanhoInputDTO;
 import br.com.godebts.dto.GastoDTO;
 import br.com.godebts.dto.GastoInputDTO;
 import br.com.godebts.service.GastoService;
@@ -26,6 +27,11 @@ public class GastoController {
     @DeleteMapping("/deletar/{gastoId}")
     public void deletarGasto(@PathVariable Long gastoId) {
         gastoService.deletarGasto(gastoId);
+    }
+
+    @PatchMapping
+    public GastoDTO editarGasto(@PathVariable Long gastoId, @RequestBody GastoInputDTO ganhoInputDTO) {
+        return gastoService.editarGanho(gastoId, ganhoInputDTO);
     }
 
 }
