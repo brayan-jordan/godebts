@@ -45,4 +45,12 @@ public class GanhoService {
         return ganhoAssembler.toModel(ganhoRepository.save(novoGanho));
     }
 
+    public void deletarGanho(Long ganhoId) {
+        try {
+            ganhoRepository.deleteById(ganhoId);
+        } catch (Exception e) {
+            throw new NegoxioException("Nao existe ganho com esse Id");
+        }
+    }
+
 }

@@ -23,4 +23,9 @@ public class GanhoController {
         return ganhoService.duplicarGastoProxMes(usuarioId, ganhoId);
     }
 
+    @DeleteMapping("/deletar/{ganhoId}")
+    public void  deletarGanho(@PathVariable Long ganhoId) {
+        ganhoService.deletarGanho(ganhoId);
+    }
+
 }

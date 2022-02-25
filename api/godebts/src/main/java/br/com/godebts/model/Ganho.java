@@ -22,7 +22,7 @@ public class Ganho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 

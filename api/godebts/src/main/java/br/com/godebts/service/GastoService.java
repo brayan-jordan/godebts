@@ -43,4 +43,12 @@ public class GastoService {
         return gastoAssembler.toModel(gastoRepository.save(novoGasto));
     }
 
+    public void deletarGasto(Long gastoId) {
+        try {
+            gastoRepository.deleteById(gastoId);
+        } catch (Exception e) {
+            throw new NegoxioException("Nao existe gasto com esse Id");
+        }
+    }
+
 }
