@@ -18,4 +18,9 @@ public class GastoController {
         return gastoService.adicionarGasto(infoGasto, usuarioId);
     }
 
+    @PostMapping("/duplicar/{usuarioId}/{gastoId}")
+    public GastoDTO adicionarGastoProxMes(@PathVariable Long usuarioId, @PathVariable Long gastoId) {
+        return gastoService.duplicarGastoProxMes(usuarioId, gastoId);
+    }
+
 }

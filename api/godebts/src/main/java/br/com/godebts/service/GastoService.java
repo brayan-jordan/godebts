@@ -2,6 +2,7 @@ package br.com.godebts.service;
 
 import br.com.godebts.dto.GastoDTO;
 import br.com.godebts.dto.GastoInputDTO;
+import br.com.godebts.exception.NegoxioException;
 import br.com.godebts.mapper.GastoAssembler;
 import br.com.godebts.model.Gasto;
 import br.com.godebts.repository.GastoRepository;
@@ -25,6 +26,21 @@ public class GastoService {
         gasto.setDataHoraCadastro(LocalDateTime.now());
 
         return gastoAssembler.toModel(gastoRepository.save(gasto));
+    }
+
+    public GastoDTO duplicarGastoProxMes(Long usuarioId, Long gastoId) {
+        Gasto gasto = gastoRepository.findById(gastoId).orElseThrow(() -> new NegoxioException(
+                "Teste"
+        ));
+
+        Gasto novoGasto = new Gasto();
+        novoGasto.setValor(gasto.getValor());
+        novoGasto.setUsuario(gasto.getUsuario());
+        novoGasto.setDescricao(gasto.getDescricao());
+        novoGasto.setNome(gasto.getNome());
+        novoGasto.setData(gasto.getData().plusMonths(1));
+        novoGasto.setDataHoraCadastro(LocalDateTime.now());
+        return gastoAssembler.toModel(gastoRepository.save(novoGasto));
     }
 
 }

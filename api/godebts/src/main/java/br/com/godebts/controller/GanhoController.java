@@ -18,4 +18,9 @@ public class GanhoController {
         return ganhoService.adicionarNovoGanho(infoGanho, usuarioId);
     }
 
+    @PostMapping("/duplicar/{usuarioId}/{ganhoId}")
+    public GanhoDTO duplicarGanho(@PathVariable Long usuarioId, @PathVariable Long ganhoId) {
+        return ganhoService.duplicarGastoProxMes(usuarioId, ganhoId);
+    }
+
 }
