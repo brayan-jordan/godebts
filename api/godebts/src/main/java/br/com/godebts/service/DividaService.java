@@ -24,6 +24,7 @@ public class DividaService {
 
         Divida divida = dividaAssembler.toEntity(dividaInputDTO);
         divida.setUsuario(usuario);
+        divida.setValor(divida.getValor() - divida.getValor() * 2);
         divida.setDataHoraCadastro(LocalDateTime.now());
         return dividaAssembler.toModel(dividaRepository.save(divida));
     }

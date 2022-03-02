@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 public class Divida {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne()
@@ -40,7 +40,7 @@ public class Divida {
     private LocalDate dataInicio;
 
     @NotNull
-    private LocalDate dataFinalizacao;
+    private LocalDate finalizacao;
 
     private LocalDateTime dataHoraCadastro;
 

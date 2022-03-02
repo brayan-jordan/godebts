@@ -64,7 +64,7 @@ CREATE TABLE dividas (
     valor DOUBLE(10,2) NOT NULL,
     descricao VARCHAR(500) NOT NULL,
     data_inicio DATE NOT NULL,
-    data_finalizacao DATE NOT NULL,
+    finalizacao DATE NOT NULL,
     data_hora_cadastro DATE NOT NULL,
     PRIMARY KEY (id)
 );

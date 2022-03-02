@@ -13,7 +13,7 @@ public class DividaController {
 
     private DividaService dividaService;
 
-    @PostMapping("/cadastrar/{dividaId}")
+    @PostMapping("/cadastrar/{usuarioId}")
     public DividaDTO cadastrarNovaDivida(@PathVariable Long usuarioId, @RequestBody DividaInputDTO dividaInputDTO) {
         return dividaService.cadastrarNovaDivida(dividaInputDTO, usuarioId);
     }

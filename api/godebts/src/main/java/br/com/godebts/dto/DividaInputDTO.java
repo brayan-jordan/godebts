@@ -17,6 +17,6 @@ public class DividaInputDTO {
 
     private LocalDate dataInicio;
 
-    private LocalDate dataFinalizacao;
+    private LocalDate finalizacao;
 
 }
