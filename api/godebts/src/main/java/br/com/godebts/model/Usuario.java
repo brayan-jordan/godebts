@@ -54,7 +54,10 @@ public class Usuario implements UserDetails {
     private List<Gasto> gastos;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<Gasto> ganhos;
+    private List<Ganho> ganhos;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private List<Divida> dividas;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

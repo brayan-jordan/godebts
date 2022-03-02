@@ -56,3 +56,18 @@ CREATE TABLE ganhos (
 
 ALTER TABLE ganhos ADD CONSTRAINT fk_ganho_usuario
 FOREIGN KEY (usuario_id) REFERENCES usuarios (id);
+
+CREATE TABLE dividas (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    usuario_id bigint NOT NULL,
+    nome VARCHAR(60) NOT NULL,
+    valor DOUBLE(10,2) NOT NULL,
+    descricao VARCHAR(500) NOT NULL,
+    data_inicio DATE NOT NULL,
+    data_finalizacao DATE NOT NULL,
+    data_hora_cadastro DATE NOT NULL,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE dividas ADD CONSTRAINT fk_dividas_usuario
+FOREIGN KEY (usuario_id) REFERENCES dividas (id);
