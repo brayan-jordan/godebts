@@ -1,12 +1,6 @@
 # godebts
-Projeto de gerenciamento de dividas em andamento (fase de prototipação), feito para testar meus conhecimentos em Java e React
-Protótipo tela de login:
-# ![TESTE](https://github.com/brayanJordan/godebts/blob/main/external_imgs/print_login.png)
-Protótipo tela home:
-# ![TESTE](https://github.com/brayanJordan/godebts/blob/main/external_imgs/print_home.png)
-Protótipo tela adicionar nova divida:
-# ![TESTE](https://github.com/brayanJordan/godebts/blob/main/external_imgs/print_adicionardivida.png)
-Além do protótipo que já tem algumas telas em desenvolvimento, temos a API que já foi finalizada...
+API Restfull para gerenciamento de dividas e gasto desenvolvido na linguagem java, usando hibernate, websecurity com jwt, migrations, e demais dependencias para realizar o projeto 
+
 A API conta diretamente com WebSecurity então para usar as rotas é necessário estar autenticado e outras funcionalidades
 Segue alguns exemplos de rotas:
 Rota de cadastro de dívidas
